@@ -76,11 +76,20 @@ class SecondScreen: UIViewController {
         view.addSubview(loginButton)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.setTitle("Login", for: .normal) // Bu da eksikti
+        loginButton.addTarget(self, action: #selector(NextStackView), for: .touchUpInside)
         NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: PasswordTextfield.bottomAnchor, constant: 30),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    
+    @objc
+    func NextStackView(){
+        let nextScreenStackView = StackViewScreen()
+        nextScreenStackView.title = "StackViewScreen"
+        navigationController?.pushViewController(nextScreenStackView, animated: true)
     }
 }
